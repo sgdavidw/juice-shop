@@ -1,3 +1,4 @@
+#FROM node:14 as installer
 FROM node:13 as installer
 COPY . /juice-shop
 WORKDIR /juice-shop
@@ -5,6 +6,7 @@ RUN npm install --production --unsafe-perm
 RUN npm dedupe
 RUN rm -rf frontend/node_modules
 
+#FROM node:14-alpine
 FROM node:13.7-alpine3.11
 ARG BUILD_DATE
 ARG VCS_REF
